@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерьер — Всё, чего заслуживает ваш дом</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page">
+    <header class="header">
+        <a class="header__home" href="index.html" aria-label="На главную">
+            <img class="header__logo" src="img/logo.svg" alt="Интерьер">
+        </a>
+        <form class="header__search-form" action="catalog.html" method="get">
+            <input class="header__search" type="search" name="q" placeholder="Поиск" aria-label="Поиск товаров">
+        </form>
+        <nav class="header__nav" aria-label="Основная навигация">
+            <ul class="header__menu">
+                <li class="header__menu-item"><a class="header__link" href="catalog.html">Каталог</a></li>
+                <li class="header__menu-item"><a class="header__link" href="cart.html">Корзина</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="top-banner">
+            <div class="top-banner__inner">
+                <h1 class="top-banner__title">Все, чего заслуживает ваш дом</h1>
+                <p class="top-banner__subtitle">Наша мебель — ваше отражение</p>
+                <a class="top-banner__link" href="catalog.html">Перейти в каталог</a>
+            </div>
+        </section>
+
+        <section class="categories center">
+            <h2 class="categories__title">Мебель для ...</h2>
+            <div class="categories__content">
+                <a class="category-card" href="catalog.html">
+                    <img class="category-card__image" src="img/NASTAN2.jpg" alt="Мебель для отдыха">
+                    <span class="category-card__title">Отдыха</span>
+                </a>
+                <a class="category-card" href="catalog.html">
+                    <img class="category-card__image" src="img/works.jpg" alt="Мебель для работы">
+                    <span class="category-card__title">Работы</span>
+                </a>
+                <a class="category-card" href="catalog.html">
+                    <img class="category-card__image" src="img/kitchens.jpg" alt="Мебель для кухни">
+                    <span class="category-card__title">Кухни</span>
+                </a>
+                <a class="category-card" href="catalog.html">
+                    <img class="category-card__image" src="img/littleRoom.jpg" alt="Мебель для детской">
+                    <span class="category-card__title">Детской</span>
+                </a>
+                <a class="category-card" href="catalog.html">
+                    <img class="category-card__image" src="img/bath.jpg" alt="Мебель для ванной">
+                    <span class="category-card__title">Ванной</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="offers center">
+            <h2 class="offers__title">Специальные предложения</h2>
+            <div class="offers__content">
+                <article class="product-card">
+                    <img class="product-card__image" src="img/VODA.jpg" alt="Люстра VODA">
+                    <h3 class="product-card__title">Люстра VODA</h3>
+                    <p class="product-card__desc">Основная люстра наивысшей надежности, которая подойдет для вашего интерьера</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">45 000 руб.</span>
+                        <span class="product-card__price product-card__price_old">67 000 руб.</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="img/RONALD.jpg" alt="Диван RONALD">
+                    <h3 class="product-card__title">Диван RONALD</h3>
+                    <p class="product-card__desc">Модель отличается простотой линий и форм, отличным качеством раскроя</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">156 000 руб.</span>
+                        <span class="product-card__price product-card__price_old">198 000 руб.</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="img/NORMAN.jpg" alt="Комод VENT">
+                    <h3 class="product-card__title">Комод VENT</h3>
+                    <p class="product-card__desc">Современный дизайн с практичным функционалом для вашего дома</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">34 000 руб.</span>
+                        <span class="product-card__price product-card__price_old">45 000 руб.</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="catalog-section center">
+            <h2 class="catalog-section__title">Каталог товаров</h2>
+            <div class="catalog-section__content">
+                <article class="product-card">
+                    <img class="product-card__image" src="img/TATRAN.jpg" alt="Кровать TATRAN">
+                    <h3 class="product-card__title">Кровать TATRAN</h3>
+                    <p class="product-card__desc">Современная кровать с мягким изголовьем для комфортного отдыха</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">120 000 руб.</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="img/VILORA.jpg" alt="Кресло VILORA">
+                    <h3 class="product-card__title">Кресло VILORA</h3>
+                    <p class="product-card__desc">Мягкое и уютное кресло с аккуратным современным дизайном</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">21 000 руб.</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="img/MENU.jpg" alt="Стол MENU">
+                    <h3 class="product-card__title">Стол MENU</h3>
+                    <p class="product-card__desc">Лаконичный стол для столовой или рабочей зоны</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">34 000 руб.</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="img/ASKESTA.jpg" alt="Кресло ASKESTA">
+                    <h3 class="product-card__title">Кресло ASKESTA</h3>
+                    <p class="product-card__desc">Комфортное кресло с выразительной фактурой и мягкой посадкой</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">68 000 руб.</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="img/NORMAN.jpg" alt="Стол NORMAN">
+                    <h3 class="product-card__title">Стол NORMAN</h3>
+                    <p class="product-card__desc">Прочный стол с натуральной отделкой для интерьера</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">40 000 руб.</span>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="img/NASTAN.jpg" alt="Диван NASTAN">
+                    <h3 class="product-card__title">Диван NASTAN</h3>
+                    <p class="product-card__desc">Мягкий диван прямой формы для уютной гостиной</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">80 000 руб.</span>
+                    </div>
+                </article>
+            </div>
+            <a class="catalog-section__link" href="catalog.html">Перейти в каталог</a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer__brand">
+            <img class="footer__logo" src="img/logo_main.svg" alt="Логотип Интерьер">
+        </div>
+
+        <div class="footer__nav-group">
+            <h2 class="footer__title footer__title_menu">Меню</h2>
+            <nav class="footer__nav" aria-label="Навигация в подвале">
+                <ul class="footer__menu">
+                    <li class="footer__menu-item"><a class="footer__link" href="index.html">Главная</a></li>
+                    <li class="footer__menu-item"><a class="footer__link" href="catalog.html">Каталог</a></li>
+                    <li class="footer__menu-item"><a class="footer__link" href="cart.html">Корзина</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="footer__contacts-group">
+            <h2 class="footer__title">Контакты</h2>
+            <div class="footer__contacts-list">
+                <a class="footer__link footer__link_contact" href="tel:+79088008080">+7 908 800 80 80</a>
+                <a class="footer__link footer__link_contact" href="mailto:help@interier.com">help@interier.com</a>
+            </div>
+            <div class="footer__socials">
+                <a class="footer__social-link" href="https://vk.com"><img class="footer__social-icon" src="img/vk.svg" alt="ВКонтакте"></a>
+                <a class="footer__social-link" href="https://t.me"><img class="footer__social-icon" src="img/telegram.svg" alt="Телеграм"></a>
+                <a class="footer__social-link" href="https://dzen.ru"><img class="footer__social-icon" src="img/dzen.svg" alt="Дзен"></a>
+            </div>
+        </div>
+
+        <form class="subscribe-form">
+            <label class="subscribe-form__text" for="home-email">Получайте наши новости и обновления</label>
+            <input class="subscribe-form__input" id="home-email" name="email" type="email" placeholder="Ваш e-mail">
+            <button class="subscribe-form__button" type="submit">Подписаться</button>
+        </form>
+    </footer>
+</body>
+</html>

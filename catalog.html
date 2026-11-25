@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — Интерьер</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page">
+    <header class="header">
+        <a class="header__home" href="index.html" aria-label="На главную">
+            <img class="header__logo" src="img/logo.svg" alt="Интерьер">
+        </a>
+        <form class="header__search-form" action="catalog.html" method="get">
+            <input class="header__search" type="search" name="q" placeholder="Поиск" aria-label="Поиск товаров">
+        </form>
+        <nav class="header__nav" aria-label="Основная навигация">
+            <ul class="header__menu">
+                <li class="header__menu-item"><a class="header__link" href="catalog.html">Каталог</a></li>
+                <li class="header__menu-item"><a class="header__link" href="cart.html">Корзина</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="catalog-banner">
+            <div class="catalog-banner__inner">
+                <h1 class="catalog-banner__title">Каталог</h1>
+            </div>
+        </section>
+
+        <section class="catalog-content" aria-label="Товары каталога">
+            <nav class="breadcrumbs" aria-label="Хлебные крошки">
+                <a class="breadcrumbs__link" href="index.html">Главная</a>
+                <span class="breadcrumbs__separator">/</span>
+                <span class="breadcrumbs__current" aria-current="page">Каталог товаров</span>
+            </nav>
+            <div class="catalog-content__toolbar">
+                <div class="catalog-filters">
+                    <button
+                        class="catalog-filters__toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="catalog-filters-form"
+                    >
+                        Фильтрация
+                    </button>
+                    <form
+                        class="catalog-filters__form"
+                        id="catalog-filters-form"
+                        action="catalog.html"
+                        method="get"
+                        hidden
+                    >
+                        <div class="catalog-filters__content">
+                            <fieldset class="catalog-filters__group catalog-filters__group_delivery">
+                                <legend class="catalog-filters__label">Сроки доставки</legend>
+                                <div class="catalog-filters__option">
+                                    <input id="delivery-any" type="radio" name="delivery" value="any" checked>
+                                    <label for="delivery-any">Неважно</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="delivery-today" type="radio" name="delivery" value="today">
+                                    <label for="delivery-today">Сегодня</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="delivery-tomorrow" type="radio" name="delivery" value="tomorrow">
+                                    <label for="delivery-tomorrow">Завтра</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="delivery-three-days" type="radio" name="delivery" value="three-days">
+                                    <label for="delivery-three-days">До 3 дней</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="delivery-week" type="radio" name="delivery" value="week">
+                                    <label for="delivery-week">До 7 дней</label>
+                                </div>
+                            </fieldset>
+                            <fieldset class="catalog-filters__group catalog-filters__group_price">
+                                <legend class="catalog-filters__label">Цена</legend>
+                                <div class="catalog-filters__price-values">
+                                    <span class="catalog-filters__price-min">от 0 руб.</span>
+                                    <span class="catalog-filters__price-max">до 100000 руб.</span>
+                                </div>
+                                <div class="catalog-filters__range-wrap">
+                                    <span class="catalog-filters__range-track" aria-hidden="true"></span>
+                                    <input
+                                        class="catalog-filters__range catalog-filters__range_min"
+                                        type="range"
+                                        name="price-from"
+                                        min="0"
+                                        max="100000"
+                                        value="0"
+                                        aria-label="Минимальная цена"
+                                    >
+                                    <input
+                                        class="catalog-filters__range catalog-filters__range_max"
+                                        type="range"
+                                        name="price-to"
+                                        min="0"
+                                        max="100000"
+                                        value="100000"
+                                        aria-label="Максимальная цена"
+                                    >
+                                </div>
+                            </fieldset>
+                            <fieldset class="catalog-filters__group catalog-filters__group_color">
+                                <legend class="catalog-filters__label">Цвет</legend>
+                                <div class="catalog-filters__colors">
+                                    <div class="catalog-color">
+                                        <input id="color-white" type="checkbox" name="color" value="white">
+                                        <label class="catalog-color__swatch catalog-color__swatch_white" for="color-white" aria-label="Белый"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-black" type="checkbox" name="color" value="black">
+                                        <label class="catalog-color__swatch catalog-color__swatch_black" for="color-black" aria-label="Чёрный"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-gray" type="checkbox" name="color" value="gray">
+                                        <label class="catalog-color__swatch catalog-color__swatch_gray" for="color-gray" aria-label="Серый"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-red" type="checkbox" name="color" value="red">
+                                        <label class="catalog-color__swatch catalog-color__swatch_red" for="color-red" aria-label="Красный"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-orange" type="checkbox" name="color" value="orange">
+                                        <label class="catalog-color__swatch catalog-color__swatch_orange" for="color-orange" aria-label="Оранжевый"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-yellow" type="checkbox" name="color" value="yellow">
+                                        <label class="catalog-color__swatch catalog-color__swatch_yellow" for="color-yellow" aria-label="Жёлтый"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-green" type="checkbox" name="color" value="green">
+                                        <label class="catalog-color__swatch catalog-color__swatch_green" for="color-green" aria-label="Зелёный"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-light-blue" type="checkbox" name="color" value="light-blue">
+                                        <label class="catalog-color__swatch catalog-color__swatch_light-blue" for="color-light-blue" aria-label="Голубой"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-blue" type="checkbox" name="color" value="blue">
+                                        <label class="catalog-color__swatch catalog-color__swatch_blue" for="color-blue" aria-label="Синий"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-purple" type="checkbox" name="color" value="purple">
+                                        <label class="catalog-color__swatch catalog-color__swatch_purple" for="color-purple" aria-label="Фиолетовый"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-pink" type="checkbox" name="color" value="pink">
+                                        <label class="catalog-color__swatch catalog-color__swatch_pink" for="color-pink" aria-label="Розовый"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-turquoise" type="checkbox" name="color" value="turquoise">
+                                        <label class="catalog-color__swatch catalog-color__swatch_turquoise" for="color-turquoise" aria-label="Бирюзовый"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-brown" type="checkbox" name="color" value="brown">
+                                        <label class="catalog-color__swatch catalog-color__swatch_brown" for="color-brown" aria-label="Коричневый"></label>
+                                    </div>
+                                    <div class="catalog-color">
+                                        <input id="color-olive" type="checkbox" name="color" value="olive">
+                                        <label class="catalog-color__swatch catalog-color__swatch_olive" for="color-olive" aria-label="Оливковый"></label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="catalog-filters__group catalog-filters__group_room">
+                                <legend class="catalog-filters__label">Тип комнаты</legend>
+                                <div class="catalog-filters__option">
+                                    <input id="room-kitchen" type="checkbox" name="room" value="kitchen">
+                                    <label for="room-kitchen">Кухня и столовая</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="room-bathroom" type="checkbox" name="room" value="bathroom">
+                                    <label for="room-bathroom">Ванная комната</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="room-children" type="checkbox" name="room" value="children">
+                                    <label for="room-children">Детская комната</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="room-office" type="checkbox" name="room" value="office">
+                                    <label for="room-office">Домашний офис</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="room-living" type="checkbox" name="room" value="living">
+                                    <label for="room-living">Гостиная</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="room-hallway" type="checkbox" name="room" value="hallway">
+                                    <label for="room-hallway">Прихожая</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="room-bedroom" type="checkbox" name="room" value="bedroom">
+                                    <label for="room-bedroom">Спальня</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="room-wardrobe" type="checkbox" name="room" value="wardrobe">
+                                    <label for="room-wardrobe">Гардероб</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="room-country" type="checkbox" name="room" value="country">
+                                    <label for="room-country">Дача</label>
+                                </div>
+                                <div class="catalog-filters__option">
+                                    <input id="room-lighting" type="checkbox" name="room" value="lighting">
+                                    <label for="room-lighting">Освещение</label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <button class="catalog-filters__submit" type="submit">
+                            Применить
+                        </button>
+                    </form>
+                </div>
+                <label class="catalog-sort">
+                    <span class="visually-hidden">Порядок сортировки</span>
+                    <select class="catalog-sort__select" name="sort" aria-label="Порядок сортировки">
+                        <option value="popular" selected>По популярности</option>
+                        <option value="newest">сперва новые</option>
+                        <option value="price-ascending">сначала дешевле</option>
+                        <option value="price-descending">сначала дороже</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="catalog-content__products">
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="bed"
+                    data-room="bedroom"
+                    data-color="gray"
+                    data-price="120000"
+                    data-delivery="week"
+                    data-popularity="12"
+                >
+                    <img class="product-card__image" src="img/TATRAN2.jpg" alt="Кровать TATRAN">
+                    <h2 class="product-card__title">Кровать TATRAN</h2>
+                    <p class="product-card__desc">Основание из полированной нержавеющей стали, поднятое основание из натуральной древесины.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">120 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="chair"
+                    data-room="living"
+                    data-color="yellow"
+                    data-price="21000"
+                    data-delivery="today"
+                    data-popularity="11"
+                >
+                    <img class="product-card__image" src="img/VILORA.jpg" alt="Кресло VILORA">
+                    <h2 class="product-card__title">Кресло VILORA</h2>
+                    <p class="product-card__desc">Мягкое и уютное, аккуратное и стильное. Упругие подушки сиденья и приятная на ощупь ткань.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">21 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="table"
+                    data-room="kitchen"
+                    data-color="beige"
+                    data-price="34000"
+                    data-delivery="tomorrow"
+                    data-popularity="10"
+                >
+                    <img class="product-card__image" src="img/MENU2.jpg" alt="Стол MENU">
+                    <h2 class="product-card__title">Стол MENU</h2>
+                    <p class="product-card__desc">Лаконичный обеденный стол из натуральных материалов.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">34 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="sofa"
+                    data-room="living"
+                    data-color="gray"
+                    data-price="68000"
+                    data-delivery="week"
+                    data-popularity="9"
+                >
+                    <img class="product-card__image" src="img/ASKESTA2.jpg" alt="Диван ASKESTA">
+                    <h2 class="product-card__title">Диван ASKESTA</h2>
+                    <p class="product-card__desc">Мягкий диван в лаконичном дизайне для комфортного отдыха.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">68 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="chair"
+                    data-room="living"
+                    data-color="beige"
+                    data-price="40000"
+                    data-delivery="tomorrow"
+                    data-popularity="8"
+                >
+                    <img class="product-card__image" src="img/LUNAR.jpg" alt="Кресло LUNAR">
+                    <h2 class="product-card__title">Кресло LUNAR</h2>
+                    <p class="product-card__desc">Подвесное кресло для уютного уголка в доме.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">40 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="cabinet"
+                    data-room="living"
+                    data-color="black"
+                    data-price="80000"
+                    data-delivery="week"
+                    data-popularity="7"
+                >
+                    <img class="product-card__image" src="img/NORMAN.jpg" alt="Шкаф NASTAN">
+                    <h2 class="product-card__title">Шкаф NASTAN</h2>
+                    <p class="product-card__desc">Функциональная система хранения для современной гостиной.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">80 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="bed"
+                    data-room="bedroom"
+                    data-color="gray"
+                    data-price="120000"
+                    data-delivery="week"
+                    data-popularity="6"
+                >
+                    <img class="product-card__image" src="img/TATRAN2.jpg" alt="Кровать TATRAN">
+                    <h2 class="product-card__title">Кровать TATRAN</h2>
+                    <p class="product-card__desc">Основание из полированной нержавеющей стали, поднятое основание из натуральной древесины.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">120 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="chair"
+                    data-room="living"
+                    data-color="yellow"
+                    data-price="21000"
+                    data-delivery="today"
+                    data-popularity="5"
+                >
+                    <img class="product-card__image" src="img/VILORA.jpg" alt="Кресло VILORA">
+                    <h2 class="product-card__title">Кресло VILORA</h2>
+                    <p class="product-card__desc">Мягкое и уютное, аккуратное и стильное. Упругие подушки сиденья и приятная на ощупь ткань.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">21 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="table"
+                    data-room="kitchen"
+                    data-color="beige"
+                    data-price="34000"
+                    data-delivery="tomorrow"
+                    data-popularity="4"
+                >
+                    <img class="product-card__image" src="img/MENU2.jpg" alt="Стол MENU">
+                    <h2 class="product-card__title">Стол MENU</h2>
+                    <p class="product-card__desc">Лаконичный обеденный стол из натуральных материалов.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">34 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="sofa"
+                    data-room="living"
+                    data-color="gray"
+                    data-price="68000"
+                    data-delivery="week"
+                    data-popularity="3"
+                >
+                    <img class="product-card__image" src="img/ASKESTA2.jpg" alt="Диван ASKESTA">
+                    <h2 class="product-card__title">Диван ASKESTA</h2>
+                    <p class="product-card__desc">Мягкий диван в лаконичном дизайне для комфортного отдыха.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">68 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="chair"
+                    data-room="living"
+                    data-color="beige"
+                    data-price="40000"
+                    data-delivery="tomorrow"
+                    data-popularity="2"
+                >
+                    <img class="product-card__image" src="img/LUNAR.jpg" alt="Кресло LUNAR">
+                    <h2 class="product-card__title">Кресло LUNAR</h2>
+                    <p class="product-card__desc">Подвесное кресло для уютного уголка в доме.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">40 000 руб.</span>
+                    </div>
+                </article>
+                <article
+                    class="product-card product-card_catalog"
+                    data-category="cabinet"
+                    data-room="living"
+                    data-color="black"
+                    data-price="80000"
+                    data-delivery="week"
+                    data-popularity="1"
+                >
+                    <img class="product-card__image" src="img/NORMAN.jpg" alt="Шкаф NASTAN">
+                    <h2 class="product-card__title">Шкаф NASTAN</h2>
+                    <p class="product-card__desc">Функциональная система хранения для современной гостиной.</p>
+                    <div class="product-card__price-box">
+                        <span class="product-card__price product-card__price_current">80 000 руб.</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__brand">
+            <a href="index.html" aria-label="На главную"><img class="footer__logo" src="img/logo_main.svg" alt="Интерьер"></a>
+        </div>
+        <div class="footer__nav-group">
+            <h2 class="footer__title footer__title_menu">Меню</h2>
+            <nav class="footer__nav" aria-label="Навигация в подвале">
+                <ul class="footer__menu">
+                    <li class="footer__menu-item"><a class="footer__link" href="index.html">Главная</a></li>
+                    <li class="footer__menu-item"><a class="footer__link" href="catalog.html">Каталог</a></li>
+                    <li class="footer__menu-item"><a class="footer__link" href="cart.html">Корзина</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__contacts-group">
+            <h2 class="footer__title">Контакты</h2>
+            <div class="footer__contacts-list">
+                <a class="footer__link footer__link_contact" href="tel:+79088008080">+7 908 800 80 80</a>
+                <a class="footer__link footer__link_contact" href="mailto:help@interier.com">help@interier.com</a>
+            </div>
+            <div class="footer__socials">
+                <a class="footer__social-link" href="https://vk.com"><img class="footer__social-icon" src="img/vk.svg" alt="ВКонтакте"></a>
+                <a class="footer__social-link" href="https://t.me"><img class="footer__social-icon" src="img/telegram.svg" alt="Телеграм"></a>
+                <a class="footer__social-link" href="https://dzen.ru"><img class="footer__social-icon" src="img/dzen.svg" alt="Дзен"></a>
+            </div>
+        </div>
+        <form class="subscribe-form">
+            <label class="subscribe-form__text" for="catalog-email">Получайте наши новости и обновления</label>
+            <input class="subscribe-form__input" id="catalog-email" name="email" type="email" placeholder="Ваш e-mail">
+            <button class="subscribe-form__button" type="submit">Подписаться</button>
+        </form>
+    </footer>
+    <script>
+        const filterForm = document.querySelector('.catalog-filters__form');
+        const filterToggle = document.querySelector('.catalog-filters__toggle');
+        const productsGrid = document.querySelector('.catalog-content__products');
+        const sortSelect = document.querySelector('.catalog-sort__select');
+        const minimumPriceRange = filterForm.querySelector('.catalog-filters__range_min');
+        const maximumPriceRange = filterForm.querySelector('.catalog-filters__range_max');
+        const minimumPriceLabel = filterForm.querySelector('.catalog-filters__price-min');
+        const maximumPriceLabel = filterForm.querySelector('.catalog-filters__price-max');
+        const priceRangeTrack = filterForm.querySelector('.catalog-filters__range-track');
+        const productCards = [...productsGrid.querySelectorAll('.product-card')];
+
+        filterToggle.addEventListener('click', () => {
+            filterForm.hidden = !filterForm.hidden;
+            filterToggle.setAttribute('aria-expanded', String(!filterForm.hidden));
+        });
+
+        const updatePriceLabels = () => {
+            const minimum = Number(minimumPriceRange.value);
+            const maximum = Number(maximumPriceRange.value);
+            const sliderMinimum = Number(minimumPriceRange.min);
+            const sliderMaximum = Number(minimumPriceRange.max);
+            const sliderRange = sliderMaximum - sliderMinimum;
+            const minimumPosition = ((minimum - sliderMinimum) / sliderRange) * 100;
+            const maximumPosition = ((maximum - sliderMinimum) / sliderRange) * 100;
+
+            minimumPriceLabel.textContent = `от ${minimum.toLocaleString('ru-RU')} руб.`;
+            maximumPriceLabel.textContent = `до ${maximum.toLocaleString('ru-RU')} руб.`;
+            priceRangeTrack.style.left = `${minimumPosition}%`;
+            priceRangeTrack.style.right = `${100 - maximumPosition}%`;
+        };
+
+        minimumPriceRange.addEventListener('input', () => {
+            if (Number(minimumPriceRange.value) > Number(maximumPriceRange.value)) {
+                minimumPriceRange.value = maximumPriceRange.value;
+            }
+            updatePriceLabels();
+        });
+
+        maximumPriceRange.addEventListener('input', () => {
+            if (Number(maximumPriceRange.value) < Number(minimumPriceRange.value)) {
+                maximumPriceRange.value = minimumPriceRange.value;
+            }
+            updatePriceLabels();
+        });
+
+        updatePriceLabels();
+
+        filterForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = new FormData(filterForm);
+            const selectedDelivery = formData.get('delivery');
+            const selectedRooms = formData.getAll('room');
+            const selectedColors = formData.getAll('color');
+            const minimumPrice = Number(formData.get('price-from')) || 0;
+            const maximumPrice = Number(formData.get('price-to')) || Number(formData.get('price-range')) || Infinity;
+
+            productCards.forEach((card) => {
+                const price = Number(card.dataset.price);
+                const matchesDelivery = selectedDelivery === 'any' || card.dataset.delivery === selectedDelivery;
+                const matchesRoom = selectedRooms.length === 0 || selectedRooms.includes(card.dataset.room);
+                const matchesColor = selectedColors.length === 0 || selectedColors.includes(card.dataset.color);
+                card.hidden = !(matchesDelivery && matchesRoom && matchesColor && price >= minimumPrice && price <= maximumPrice);
+            });
+
+            filterForm.hidden = true;
+            filterToggle.setAttribute('aria-expanded', 'false');
+            filterToggle.focus();
+        });
+
+        sortSelect.addEventListener('change', () => {
+            const sortBy = sortSelect.value;
+            const sortedCards = [...productCards].sort((firstCard, secondCard) => {
+                if (sortBy === 'price-ascending') return Number(firstCard.dataset.price) - Number(secondCard.dataset.price);
+                if (sortBy === 'price-descending') return Number(secondCard.dataset.price) - Number(firstCard.dataset.price);
+                if (sortBy === 'newest') return productCards.indexOf(firstCard) - productCards.indexOf(secondCard);
+                return Number(secondCard.dataset.popularity) - Number(firstCard.dataset.popularity);
+            });
+
+            sortedCards.forEach((card) => productsGrid.append(card));
+        });
+    </script>
+</body>
+</html>
