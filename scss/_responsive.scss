@@ -47,6 +47,11 @@
         line-height: 1.2;
     }
 
+    .category-card__title {
+        font-size: 24px;
+        line-height: 1.2;
+    }
+
     .offers,
     .catalog-section {
         padding-top: 32px;
@@ -102,6 +107,16 @@
         grid-template-columns: 0.8fr 1fr 1.3fr;
         gap: 32px;
         padding: 32px;
+
+        &__title {
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        &__link {
+            font-size: 13px;
+            line-height: 1.45;
+        }
     }
 
     .footer__brand {
@@ -114,7 +129,7 @@
     }
 
     .cart-main {
-        padding-top: 88px;
+        padding-top: 0;
     }
 
     .cart-banner {
@@ -425,7 +440,7 @@
     }
 
     .cart-main {
-        padding-top: 80px;
+        padding-top: 0;
     }
 
     .cart-banner {
@@ -531,6 +546,30 @@
 
         &__button {
             min-height: 44px;
+        }
+    }
+
+    .cart-actions {
+        flex-wrap: wrap;
+        gap: 10px 16px;
+    }
+
+    .cart-actions__selected {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+
+    .cart-specials {
+        margin-top: 32px;
+
+        &__title {
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        &__grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
         }
     }
 }

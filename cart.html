@@ -39,6 +39,12 @@
                 <span class="breadcrumbs__current" aria-current="page">Корзина</span>
             </nav>
 
+            <div class="cart-actions">
+                <span class="cart-actions__selected">Избранные</span>
+                <button class="cart-actions__clear" type="button">Очистить корзину</button>
+                <a class="cart-actions__continue" href="catalog.html">Продолжить покупки</a>
+            </div>
+
             <div class="cart-layout">
                 <div class="cart-items">
                     <article class="cart-item">
@@ -108,27 +114,61 @@
                     </article>
                 </div>
 
-                <aside class="cart-summary" aria-label="Итог заказа">
+                <aside class="cart-summary" aria-label="Оформление заказа">
                     <h2 class="cart-summary__title">Оформление заказа</h2>
-                    <div class="cart-summary__row">
-                        <span>Товаров</span>
-                        <span>3 шт.</span>
-                    </div>
-                    <div class="cart-summary__row">
-                        <span>Сумма</span>
-                        <span>175 000 руб.</span>
-                    </div>
-                    <div class="cart-summary__row">
-                        <span>Доставка</span>
-                        <span>Бесплатно</span>
-                    </div>
+                    <form class="cart-summary__form" id="cart-order-form" action="#" method="post">
+                        <label class="cart-summary__field">
+                            <span>Имя</span>
+                            <input type="text" name="name" autocomplete="name" required>
+                        </label>
+                        <label class="cart-summary__field">
+                            <span>Телефон</span>
+                            <input type="tel" name="phone" autocomplete="tel" required>
+                        </label>
+                        <label class="cart-summary__field">
+                            <span>Адрес доставки</span>
+                            <input type="text" name="address" autocomplete="street-address" required>
+                        </label>
+                    </form>
                     <div class="cart-summary__total">
                         <span>Итого</span>
                         <strong>175 000 руб.</strong>
                     </div>
-                    <button class="cart-summary__button" type="button">Оформить заказ</button>
+                    <button class="cart-summary__button" type="submit" form="cart-order-form">Оформить заказ</button>
                 </aside>
             </div>
+
+            <section class="cart-specials" aria-labelledby="cart-specials-title">
+                <h2 class="cart-specials__title" id="cart-specials-title">Специальные предложения</h2>
+                <div class="cart-specials__grid">
+                    <article class="product-card">
+                        <img class="product-card__image" src="img/VODA.jpg" alt="Люстра VODA">
+                        <h3 class="product-card__title">Люстра VODA</h3>
+                        <p class="product-card__desc">Основная люстра наивысшей надежности для вашего интерьера</p>
+                        <div class="product-card__price-box">
+                            <span class="product-card__price product-card__price_current">45 000 руб.</span>
+                            <span class="product-card__price product-card__price_old">67 000 руб.</span>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img class="product-card__image" src="img/RONALD.jpg" alt="Диван RONALD">
+                        <h3 class="product-card__title">Диван RONALD</h3>
+                        <p class="product-card__desc">Модель отличается простотой линий и отличным качеством</p>
+                        <div class="product-card__price-box">
+                            <span class="product-card__price product-card__price_current">156 000 руб.</span>
+                            <span class="product-card__price product-card__price_old">198 000 руб.</span>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <img class="product-card__image" src="img/VILORA.jpg" alt="Кресло VILORA">
+                        <h3 class="product-card__title">Кресло VILORA</h3>
+                        <p class="product-card__desc">Мягкое и уютное кресло с аккуратным современным дизайном</p>
+                        <div class="product-card__price-box">
+                            <span class="product-card__price product-card__price_current">21 000 руб.</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </section>
     </main>
 
@@ -164,5 +204,47 @@
             <button class="subscribe-form__button" type="submit">Подписаться</button>
         </form>
     </footer>
+    <script>
+        const cartItems = [...document.querySelectorAll('.cart-item')];
+        const cartList = document.querySelector('.cart-items');
+        const cartSummary = document.querySelector('.cart-summary');
+        const clearButton = document.querySelector('.cart-actions__clear');
+        const orderForm = document.querySelector('#cart-order-form');
+
+        const formatPrice = (price) => `${price.toLocaleString('ru-RU')} руб.`;
+
+        const updateTotal = () => {
+            const visibleItems = [...cartList.querySelectorAll('.cart-item')];
+            const total = visibleItems.reduce((sum, item) => {
+                const priceText = item.querySelector('.cart-item__price').textContent;
+                const quantity = Number(item.querySelector('[type="number"]').value) || 1;
+                const price = Number(priceText.replace(/\D/g, '')) / 1;
+                return sum + price * quantity;
+            }, 0);
+
+            const totalValue = cartSummary.querySelector('.cart-summary__total strong');
+            totalValue.textContent = formatPrice(total);
+            cartSummary.querySelector('.cart-summary__total').hidden = visibleItems.length === 0;
+            cartSummary.querySelector('.cart-summary__button').disabled = visibleItems.length === 0;
+        };
+
+        cartItems.forEach((item) => {
+            item.querySelector('.cart-item__remove').addEventListener('click', () => {
+                item.remove();
+                updateTotal();
+            });
+
+            item.querySelector('[type="number"]').addEventListener('change', updateTotal);
+        });
+
+        clearButton.addEventListener('click', () => {
+            cartList.replaceChildren();
+            updateTotal();
+        });
+
+        orderForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+        });
+    </script>
 </body>
 </html>

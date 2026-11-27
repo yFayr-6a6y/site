@@ -1,5 +1,5 @@
 .cart-main {
-    padding-top: 104px;
+    padding-top: 0;
 }
 
 .cart-banner {
@@ -37,6 +37,31 @@
 .cart-items {
     display: grid;
     gap: 24px;
+}
+
+.cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: -8px 0 24px;
+    font-size: 14px;
+    line-height: 18px;
+
+    &__selected {
+        margin-right: auto;
+        font-weight: 500;
+        color: $color-gray;
+    }
+
+    &__clear,
+    &__continue {
+        border: 0;
+        background: transparent;
+        color: $color-black;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: inherit;
+    }
 }
 
 .cart-item {
@@ -170,6 +195,27 @@
         font-weight: 600;
     }
 
+    &__form {
+        display: grid;
+        gap: 12px;
+    }
+
+    &__field {
+        display: grid;
+        gap: 6px;
+        font-size: 12px;
+        line-height: 16px;
+
+        input {
+            width: 100%;
+            height: 42px;
+            border: 1px solid $color-border;
+            border-radius: 0;
+            background: $color-white;
+            padding: 8px 12px;
+        }
+    }
+
     &__button {
         width: 100%;
         min-height: 46px;
@@ -181,6 +227,28 @@
         line-height: 18px;
         cursor: pointer;
         animation: checkout-attention 1.2s ease-in-out 2;
+    }
+
+    .cart-specials {
+        margin-top: 48px;
+
+        &__title {
+            margin-bottom: 24px;
+            font-size: 36px;
+            line-height: 44px;
+            font-weight: 600;
+        }
+
+        &__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 32px;
+
+            .product-card {
+                width: 100%;
+                margin: 0;
+            }
+        }
     }
 }
 
